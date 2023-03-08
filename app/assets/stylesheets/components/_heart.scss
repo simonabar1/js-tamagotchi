@@ -1,0 +1,69 @@
+
+.pixel-block {
+  margin-top: 20px;
+  width: 6em;
+  height: 5em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+.pixelized--heart {
+  display: block;
+  width: 1em;
+  height: 1em;
+  box-shadow:
+	1em 0em #F22613,
+	2em 0em #F22613,
+	4em 0em #F22613,
+	5em 0em #F22613,
+
+	0em 1em #F22613,
+	1em 1em #F22613,
+	2em 1em #F22613,
+	3em 1em #F22613,
+	4em 1em #F22613,
+	5em 1em #F22613,
+	6em 1em #F22613,
+
+	0em 2em #F22613,
+	1em 2em #F22613,
+	2em 2em #F22613,
+	3em 2em #F22613,
+	4em 2em #F22613,
+	5em 2em #F22613,
+	6em 2em #F22613,
+
+	1em 3em #F22613,
+	2em 3em #F22613,
+	3em 3em #F22613,
+	4em 3em #F22613,
+	5em 3em #F22613,
+
+	2em 4em #F22613,
+	3em 4em #F22613,
+	4em 4em #F22613,
+
+	3em 5em #F22613;
+}
+
+
+.pixelized--heart {
+  /* existing code */
+  animation: pulse 1s infinite;
+  animation-delay: 2.5s;
+
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

@@ -1,2 +1,151 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div style='height: 100vh;' class=' d-flex justify-content-center align-items-center'>
+
+<!-- New Game button -->
+    <div class="container text-center" id="start-button">
+
+    <h1 class='typing'> Press "New Game" to get started!</h1>
+    <div class="pixel-block">
+    <div class="pixelized--heart">
+    </div>
+    </div>
+      <button class='start-btn' style='margin-top: 120px'>New Game</button>
+    </div>
+
+
+<!-- Avatar Selection -->
+
+
+<div id="avatar-selection" style="display: none;">
+<div>
+  <h1 style='margin: 30px auto; padding: 50px; font-size: 25px;'>Choose Your Pet's Avatar</h1>
+</div>
+  <div class="row">
+    <div class="col">
+      <span id='icon-1' class='icon-1 avatar'></span>
+    </div>
+    <div class="col">
+      <span id='icon-2' class='icon-2 avatar'></span>
+    </div>
+    <div class="col">
+      <span id='icon-3' class='icon-3 avatar'></span>
+    </div>
+  </div>
+</div>
+
+
+<!-- Pet Dashboard -->
+<div id='pet-dashboard' style='display:none; width: 60%; margin: auto;'>
+  <div class="row d-flex justify-content-center" style='border: 5px solid grey; font-size: 30px; background-color: #ebebeb; height: 70vh;text-shadow: -1px -1px black, 1px 1px white;'>
+
+    <!-- Pet Image Column -->
+    <div class="col-6 d-flex justify-content-center align-items-center width: 90%;">
+      <section class="pet-image-container text-center">
+        <div><strong><span class="name" style='display:block; margin-bottom: 30px;'></span></strong></div>
+        <span id='pet-icon' class='icon'></span>
+        <i class="fa-solid fa-heart happy" style='color:#D2042D; display: none; margin: 20px 0; font-size: 50px;'></i>
+        <i class="fa-solid fa-heart happy" style='color:#D2042D; display: none; margin: 20px 0; font-size: 50px;'></i>
+        <i class="fa-solid fa-heart happy" style='color:#D2042D; display: none; margin: 20px 0; font-size: 50px;'></i>
+        <i class="fa-regular fa-heart sad" style='color:#D2042D; display: none; margin: 20px 0; font-size: 50px;'></i>
+        <i class="fa-regular fa-heart sad" style='color:#D2042D; display: none; margin: 20px 0; font-size: 50px;'></i>
+        <i class="fa-regular fa-heart sad" style='color:#D2042D; display: none; margin: 20px 0; font-size: 50px;'></i>
+
+
+      </section>
+    </div>
+
+
+
+
+
+      <!-- Pet Info Column -->
+
+      <div class="col-6 d-flex justify-content-center align-items-center">
+        <section class="dashboard">
+        <div class='game-over' style='display:none'>
+        <h1 style="font-size: 60px; text-align: center;">Game Over</h1>
+        </div>
+        <div class="stats">
+          <div> <strong><span class="weight" style='display:none'></span> </strong></div>
+                    <div>Age: <strong><span class="age"></span></strong></div>
+
+          <div>Hunger: <strong><span class="hunger"></span>/100 </strong></div>
+
+          <div>Happiness: <strong><span class="happiness"></span>/100</strong></div>
+          <div>Health: <strong><span class="health"></span>/100</strong></div>
+          <div class="button-container">
+            <button class="treat-button action-btn">
+              <i class="fa-solid fa-burger"></i>
+            </button>
+            <button class="play-button action-btn">
+              <i class="fa-regular fa-futbol"></i>
+            </button>
+            <button class="exercise-button action-btn">
+              <i class="fa-solid fa-dumbbell"></i>
+            </button>
+            <button class="health-button action-btn">
+              <i class="fa-solid fa-syringe"></i>
+            </button>
+          </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- End of columns -->
+
+      <!-- Button trigger modal -->
+      </div>
+
+<div class="d-flex justify-content-center m-4">
+
+        <button type="button" class="btn btn-large start-btn" style='padding: 20px; font-size: 30px; margin-top: 40px;' data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Rules
+        </button>
+
+        <button type='button' id='again-button' class='btn btn-large start-btn' style='padding: 20px; font-size: 30px; margin-top: 40px; '>New Game</button>
+  </div>
+
+  </div>
+
+  <!-- End of Pet Dashboard - Begin of Game Over BTN -->
+
+  <div id='game-over' style='display:none;'>
+    <h2>Game Over!</h2>
+  </div>
+
+<!-- Closing main div -->
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Rules</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style='font-size: 16px'>
+        <strong>Keep your Tamapet happy, healthy and well fed to succeed! </strong>
+<ul>
+       <li> <strong>Happiness: </strong></li>
++ 5 with Play or Treat
+- 1 with Exercise
+<strong>Health:</strong>
+I+ 2 with Medicine
+<strong>Hunger:</strong>
+- 1 with  Treat
++ 5 with Play and Exercise
+<strong>Age:<strong>
++ 1 every 60 seconds
+</ul>
+
+<strong> Watch out! If your pet's health or happiness score reaches 0, or your hunger reaches a 100, the game will end. </strong>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got It!</button>
+      </div>
+    </div>
+  </div>
+</div>

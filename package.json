@@ -11,5 +11,8 @@
   },
   "scripts": {
     "build": "webpack --config webpack.config.js"
+  },
+  "devDependencies": {
+    "pixel-borders": "^1.1.4"
   }
 }

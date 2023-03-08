@@ -1,1 +1,76 @@
 // Specific CSS for your home-page
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2p';;
+  margin: 25px;
+  // background-color: #999999
+}
+
+main {
+  display:block;
+  height:175px;
+}
+
+header {
+  border-bottom: 1px solid black;
+}
+
+h1 {
+  font-weight: bold;
+  color: #000;
+  font-family: 'Press Start 2p';;
+
+}
+
+.bold {
+  font-weight: bold;
+}
+
+p {
+  max-width: 600px;
+}
+
+
+li {
+  margin-bottom: 5px;
+}
+
+footer {
+  padding-top: 25px;
+  border-top: 1px solid black;
+}
+
+footer a {
+  float:left;
+  margin:5px;
+}
+
+.pet-image {
+  height:150px;
+}
+
+.dashboard div {
+  display:block;
+}
+
+#pet-dashboard {
+  display: none;
+}
+
+.pet-image-container {
+  float:left;
+  padding:10px;
+}
+
+.dashboard {
+  float:left;
+  padding:20px;
+}
+
+.button-container {
+  margin-top:20px;
+}

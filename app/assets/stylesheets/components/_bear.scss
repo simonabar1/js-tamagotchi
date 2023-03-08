@@ -1,0 +1,123 @@
+// Color Map
+$colors: (
+    'o': transparent,
+    'w': white,
+    'r': red,
+    'k': #5C4033,
+    'p': white
+);
+
+$size: 10px;
+
+$pixel-art: (
+    heart: (
+        (o o r r o r r o o)
+        (o r r r r r r r o)
+        (o r r r r r r r o)
+        (o o r r r r r o o)
+        (o o o r r r o o o)
+        (o o o o r o o o o)
+    ),
+    panda: (
+      (o k k k o o k k k k k k o o k k k o)
+      (o k k k k k w w w w w w k k k k k o)
+      (o k k k w w w w w w w w w w k k k o)
+      (k k k w w w w w w w w w w w w k k k)
+      (k k k w w k k k w w k k k w w k k k)
+      (o k w w k k w k w w k w k k w w k o)
+      (o k w w w k k w w w w k k w w w k o)
+      (o k w w w w w w k k w w w w w w k o)
+      (o k w w w w w w k k w w w w w w k o)
+      (o k w w w w w k w w k w w w w w k o)
+      (o o k w w w w w k k w w w w w k o o)
+      (o o o k w w w w w w w w w w k o o o)
+      (o o o o k k k k k k k k k k o o o o)
+    )
+
+
+);
+
+$pixel-art-ko: (
+    heart-ko: (
+        (o o r r o r r o o)
+        (o r r r r r r r o)
+        (o r r r r r r r o)
+        (o o r r r r r o o)
+        (o o o r r r o o o)
+        (o o o o r o o o o)
+    ),
+panda-ko: (
+  (o k k k o o k k k k k k o o k k k o)
+  (o k k k k k w w w w w w k k k k k o)
+  (o k k k w w w w w w w w w w k k k o)
+  (k k k w w w w w w w w w w w w k k k)
+  (k k k w w k k k w w k k k w w k k k)
+  (o k w w k k w k w w k w k k w w k o)
+  (o k w w w k k k w w k k k w w w k o)
+  (o k w w w w w w k k w w w w w w k o)
+  (o k w w w w w w k k w w w w w w k o)
+  (o k w w w w w w w w w w w w w w k o)
+  (o o k w w w w w k k w w w w w k o o)
+  (o o o k w w w k w w k w w w k o o o)
+  (o o o o k w w w w w w w w k o o o o)
+  (o o o o o k k k k k k k k o o o o o)
+)
+);
+
+// Function to read the matrix and pixelize
+@function pixelize($matrix, $size) {
+    $shadow: '';
+    $rows: length($matrix);
+
+    @for $row from 1 through $rows {
+        $row-num: nth($matrix, $row);
+
+        @for $col from 1 through length($row-num) {
+            $dot: nth($row-num, $col);
+
+            $shadow: $shadow + ($col * $size) + ' ' + ($row * $size) + ' ' + map-get($colors, $dot);
+
+            @if not ($col == length($row-num) and $row == $rows) {
+                $shadow: $shadow + ',';
+            }
+        }
+    }
+    @return unquote($shadow);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.icon-2 {
+  display: block;
+  position: relative;
+  height: $size * length(map-get($pixel-art, panda));
+  width: $size * length(nth(map-get($pixel-art, panda), 1));
+  &::after {
+      content: '';
+      position: absolute;
+      top: -$size;
+      left: -$size;
+      width: $size;
+      height: $size;
+      box-shadow: pixelize(map-get($pixel-art, panda), $size);
+  }
+}
+
+.icon-2-ko {
+  display: block;
+  position: relative;
+  height: $size * length(map-get($pixel-art-ko, panda-ko));
+  width: $size * length(nth(map-get($pixel-art-ko, panda-ko), 1));
+  &::after {
+      content: '';
+      position: absolute;
+      top: -$size;
+      left: -$size;
+      width: $size;
+      height: $size;
+      box-shadow: pixelize(map-get($pixel-art-ko, panda-ko), $size);
+  }
+}
