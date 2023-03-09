@@ -24,19 +24,19 @@ document.querySelector('.health-button').addEventListener('click', clickedHealth
 checkAndUpdatePetInfoInHtml();
 
 function clickedTreatButton() {
-  pet_info.hunger = (pet_info.hunger * 1 - 5);
-  pet_info.happiness = (pet_info.happiness * 1 + 5);
+  pet_info.hunger = (pet_info.hunger * 1 - 6);
+  pet_info.happiness = (pet_info.happiness * 1 + 4);
   checkAndUpdatePetInfoInHtml();
 }
 
 function clickedPlayButton() {
-  pet_info.hunger = pet_info.hunger + 5;
-  pet_info.happiness = (pet_info.happiness * 1 + 5);
+  pet_info.hunger = pet_info.hunger + 6;
+  pet_info.happiness = (pet_info.happiness * 1 + 4);
   checkAndUpdatePetInfoInHtml();
 }
 
 function clickedExerciseButton() {
-  pet_info.hunger = pet_info.hunger + 5;
+  pet_info.hunger = pet_info.hunger + 6;
   pet_info.happiness = pet_info.happiness - 5;
   pet_info.health = pet_info.health + 3;
   checkAndUpdatePetInfoInHtml();
@@ -44,6 +44,7 @@ function clickedExerciseButton() {
 
 function clickedHealthButton() {
   pet_info.health = (pet_info.health * 1 + 2);
+  pet_info.happiness = pet_info.happiness - 5;
   checkAndUpdatePetInfoInHtml();
 }
 
@@ -74,16 +75,28 @@ function checkForGameOver() {
     const petIcon = document.getElementById('pet-icon');
     const currentAvatarClass = petIcon.classList[1]; // get the current avatar icon class
     const gameOverAvatarClass = currentAvatarClass + '-ko'; // append '-ko' to the current class
-    petIcon.classList.remove(currentAvatarClass); // remove the current class
     petIcon.classList.add(gameOverAvatarClass); // add the game over class
     const statsSection = document.querySelector('.stats');
     statsSection.style.display = 'none';
+    let gameOverMessage;
+    if (pet_info.hunger >= 100) {
+      gameOverMessage = 'Game Over! Your pet died of hunger.' }
+    else if (pet_info.happiness <= 0) {
+      gameOverMessage = 'Game Over! Your pet died of sadness.'}
+    else if (pet_info.health <= 0) {
+      gameOverMessage = 'Game Over! Your pet died of poor health.'}
+    else if (pet_info.age >= 30) {
+      gameOverMessage = 'Well Done! Your pet has lived a long and happy life. But it is still over.' }
+    else {
+      gameOverMessage = 'Game Over! Your did not take good care of your senior pet, so he passed away earlier.' }
     const gameOverSection = document.querySelector('.game-over');
     gameOverSection.style.display = 'block';
+    gameOverSection.textContent = gameOverMessage;
     const buttonContainer = document.querySelector('.button-container');
     buttonContainer.style.display = 'none';
   }
 }
+
 
 function checkHungerAndHappinessBeforeUpdating() {
   if (pet_info.hunger <= 0) {
@@ -154,9 +167,9 @@ function generatePetName() {
 // update pet information every 5 seconds
 setInterval(function() {
   pet_info.age += 1;
-  pet_info.hunger += 5;
-  pet_info.health -= 5;
-  pet_info.happiness -=5;
+  pet_info.hunger += 7;
+  pet_info.health -= 10;
+  pet_info.happiness -=8;
   checkForGameOver();
   if (isGameOver === false) {
     updatePetInfoInHtml();
